@@ -1,0 +1,69 @@
+@import "./normalize.scss";
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./components/startPage.scss";
+@import "./components/modalRegister.scss";
+
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}
+
+main {
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.container {
+  max-width: 1480px;
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}

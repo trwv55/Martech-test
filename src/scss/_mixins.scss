@@ -1,0 +1,11 @@
+@mixin btn {
+  background: linear-gradient(238.08deg, #D4208C 0.42%, #E61726 82.5%);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 23px;
+  line-height: 31px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
