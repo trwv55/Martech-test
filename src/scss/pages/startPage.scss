@@ -1,7 +1,12 @@
+@import "../variables.scss";
+
 .start__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+      @media screen and (max-width: $mobile) {
+            flex-direction: column;   
+        }
   .photos__wrapper {
     .group {
       max-width: 729px;
@@ -22,6 +27,9 @@
   }
   .text__wrapper {
     flex-basis: 483px;
+        @media screen and (max-width: $mobile) {
+            margin-top: 20px;
+          }
     h1 {
       font-size: 77px;
       line-height: 110.02%;
@@ -65,4 +73,24 @@
       }
     }
   }
+   @media screen and (max-width: $medium) {
+     .text__wrapper {
+       h1 {
+         font-size: 50px;
+       }
+       .text__list {
+        font-size: 30px;
+        .text__list-item {
+        .number {
+          font-size: 40px;
+            line-height: 40px;
+        }
+        .button {
+          width: 330px;
+          height: 70px;
+        }
+        }
+       }
+     }
+   }       
 }
