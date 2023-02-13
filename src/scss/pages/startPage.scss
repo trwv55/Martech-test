@@ -4,19 +4,27 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
       @media screen and (max-width: $mobile) {
-            flex-direction: column;   
-        }
+        flex-direction: column;   
+      }
+
   .photos__wrapper {
     .group {
       max-width: 729px;
       width: 100%;
       max-height: 690px;
       height: 100%;
+
+      @media screen and (max-width: $mobileSm) {
+          margin-top: 25px;
+        }
     }
+
     .heart__wrapper {
       position: relative;
       margin-left: 194px;
+
         .heart {
           position: absolute;
           top: 42%;
@@ -25,11 +33,19 @@
         }
     }
   }
+
   .text__wrapper {
     flex-basis: 483px;
+
         @media screen and (max-width: $mobile) {
             margin-top: 20px;
           }
+
+                    @media screen and (max-width: $mobileSm) {
+                      flex-basis: 340px;
+                      width: 100%;
+                    }
+
     h1 {
       font-size: 77px;
       line-height: 110.02%;
@@ -39,15 +55,45 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+
+      @media screen and (max-width: $medium) {
+          font-size: 50px;   
+      }
+
+      @media screen and (max-width: $mobileSm) {
+          font-size: 35px;
+        }
     }
+
     .text__list {
       margin-top: 52px;
       font-size: 38px;
       line-height: 52px;
       letter-spacing: -0.05em;
       color: #3A3A3A;
-      .text__list-item {
-        margin-bottom: 30px;
+
+      @media screen and (max-width: $medium) {
+        font-size: 30px;
+      }
+
+            @media screen and (max-width: $mobileSm) {
+              margin-top: 23px;
+              font-size: 18.82px;
+              line-height: 198.18%;
+            }
+
+      &-item {
+        
+        @media screen and (max-width: $mobileSm) {
+            margin-bottom: 18px;
+        }
+      }
+
+      .text {
+        display: inline-block;
+      }
+
+
       .number {
         font-weight: 800;
         font-size: 55px;
@@ -59,38 +105,42 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
         margin-right: 20px;
+        
+
+        @media screen and (max-width: $medium) {
+            font-size: 40px;
+            line-height: 40px;
+          }
+                     @media screen and (max-width: $mobileSm) {
+                      font-size: 33.0228px;
+                      line-height: 45px;
+                     }
       }
+
       .button {
         width: 387px;
         height: 81px;
         letter-spacing: 0.03em;
         @include btn;
+        display: inline-block;
+
+        @media screen and (max-width: $medium) {
+            width: 330px;
+            height: 70px;
+          }
+                    @media screen and (max-width: $mobileSm) {
+                      width: 251px;
+                      height: 49.02px;
+                      font-size: 13.8095px;
+                      line-height: 19px;
+                    }
       }
-      }
-      .text__list-item-button {
+   
+      &-item-button {
         display: flex;
         align-items: center;
       }
     }
   }
-   @media screen and (max-width: $medium) {
-     .text__wrapper {
-       h1 {
-         font-size: 50px;
-       }
-       .text__list {
-        font-size: 30px;
-        .text__list-item {
-        .number {
-          font-size: 40px;
-            line-height: 40px;
-        }
-        .button {
-          width: 330px;
-          height: 70px;
-        }
-        }
-       }
-     }
-   }       
+      
 }

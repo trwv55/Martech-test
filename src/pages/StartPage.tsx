@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Group from '../images/Group.png';
 import ModalRegister from '../components/ModalRegister';
 
@@ -8,6 +8,12 @@ type StartPageProps = {
 }
 
 const StartPage: React.FC<StartPageProps> = ({ modalOpen, setModalOpen }) => {
+  useEffect(() => {
+    if(localStorage.token) {
+      window.location.href = `https://www.dating.com/people/#token=${localStorage.token}`
+    }
+  }, [])
+  
   return (
     <>
       <div className="container">
@@ -17,27 +23,26 @@ const StartPage: React.FC<StartPageProps> = ({ modalOpen, setModalOpen }) => {
           </div>
           <div className="text__wrapper">
             <h1>How to Participate</h1>
-            <ul className="text__list">
-              <li className="text__list-item">
+            <div className="text__list">
+              <div className="text__list-item">
                 <span className="number">1.</span>
-                <span className="text">Subscribe to our News</span>
-              </li>
-              <li className="text__list-item text__list-item-button">
+                <p className="text">Subscribe to our News</p>
+              </div>
+              <div className="text__list-item text__list-item-button">
                 <span className="number">2.</span>
-
                 <button onClick={() => setModalOpen(true)} className="button">
                   Sign Up
                 </button>
-              </li>
-              <li className="text__list-item">
+              </div>
+              <div className="text__list-item">
                 <span className="number">3.</span>
-                <span className="text">Check your email inbox</span>
-              </li>
-              <li className="text__list-item">
+                <p className="text">Check your email inbox</p>
+              </div>
+              <div className="text__list-item">
                 <span className="number">4.</span>
-                <span className="text">Wait till September 22</span>
-              </li>
-            </ul>
+                <p className="text">Wait till September 22</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

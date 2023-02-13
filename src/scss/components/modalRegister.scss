@@ -1,3 +1,5 @@
+@import "../variables";
+
 .modal__layout {
   position: fixed;
   top: 0;
@@ -10,7 +12,8 @@
   align-items: center;
   z-index: 2;
   overflow: hidden;
-.modal__wrapper {
+
+  .wrapper {
   max-width: 1270px;
   width: 100%;
   max-height: 652px;
@@ -24,10 +27,51 @@
   display: flex;
   flex-direction: column;
   background-color: #fff;
+
+  @media screen and (max-width: 1250px) {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+        @media screen and (max-width: $medium) {
+          max-width: 700px;
+          width: 100%;
+          max-height: 500px;
+          height: 100%;
+          margin: 0 auto;
+        }
+
+                @media screen and (max-width: $mobile) {
+                  max-width: 550px;
+                  width: 100%;
+                  max-height: 500px;
+                  height: 100%;
+                  margin: 0 auto;
+                }
+        
+                         @media screen and (max-width: $modal) {
+                           max-width: 480px;
+                           width: 100%;
+                           max-height: 500px;
+                           height: 100%;
+                           margin: 0 auto;
+                         }
+
+                                 @media screen and (max-width: $mobileSm) {
+                                   max-width: 280px;
+                                   width: 100%;
+                                   max-height: 440px;
+                                   height: 100%;
+                                   margin: 0 auto;
+                                  border-radius: 20px;
+                                 }
+
   .modal__button {
     background-color: transparent;
     border: none;
     color: inherit;
+
   .exit {
     width: 28.5px;
     height: 28.5px;
@@ -35,16 +79,35 @@
     position: absolute;
     top: 45px;
     right: 45px;
+
+    @media screen and (max-width: $mobile) {
+        width: 21px;
+        height: 21px;
+      }
+            @media screen and (max-width: $mobile) {
+              top: 20px;
+              right: 11px;
+            }
   }
   }
+
   .modal__form {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 150px;
     display: flex;
     flex-direction: column;
     align-items: center; 
+
+    @media screen and (max-width: $medium) {
+        margin-top: 80px;
+      }
+
+    @media screen and (max-width: $mobile) {
+        margin-top: 72px;
+      }
+            @media screen and (max-width: $mobileSm) {
+              margin: 72px 15px;
+            }
+
     h2 {
       font-weight: 700;
       font-size: 24px;
@@ -54,8 +117,26 @@
       color: #3A3A3A;
       max-width: 619px;
       width: 100%;
+
+      @media screen and (max-width: $mobile) {
+          font-size: 22px;
+          line-height: 26px;
+        }
+                 @media screen and (max-width: $mobileSm) {
+                  font-size: 14px;
+                  line-height: 22px;
+                  width: 100%;
+                  max-width: 262px;
+                  width: 100%;
+                 }
     }
-    .modal__email {
+
+    .mail__wrapper {
+      position: relative;
+      max-width: 619px;
+      width: 100%;
+   
+    &-email {
       margin-top: 30px;
       text-align: center;
       border: none;
@@ -65,6 +146,17 @@
       width: 100%;
       height: 62px;
       position: relative;
+
+      @media screen and (max-width: $mobile) {
+          font-size: 17px;
+          line-height: 24px;
+        }
+                @media screen and (max-width: $mobileSm) {
+                  max-width: 248px;
+                  width: 100%;
+                  height: 22px;
+                }
+
       &-invalid {
           border-bottom: 1px solid #FF0000;
           background-image: url('../../images/invalid.svg');
@@ -73,7 +165,37 @@
           opacity: 1;
         }
     } 
-    .modal__password {
+
+        .error-email {
+          position: absolute;
+          top: 91px;
+          left: calc(50% - 75px);
+            
+            @media screen and (max-width: $mobileSm) {
+               top: 50px;
+              }
+        }
+
+        .error {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 18px;
+          text-align: center;
+          color: #F22533;
+          margin-top: 5px;
+        }
+    }
+
+    .pas__wrapper{
+        position: relative;
+        max-width: 619px;
+        width: 100%;
+
+        @media screen and (max-width: $mobileSm) {
+            margin-top: 15px;
+          }
+
+    &-password {
       margin-top: 30px;
       margin-top: 30px;
       font-size: 18px;
@@ -86,14 +208,36 @@
       max-width: 619px;
       width: 100%;
       height: 62px;
+      position: relative;
+
+      @media screen and (max-width: $mobileSm) {
+          max-width: 248px;
+          width: 100%;
+          height: 22px;
+          margin-top: 30px;
+        }
+
       &-invalid {
           border-bottom: 1px solid #FF0000;
           background-image: url('../../images/invalid.svg');
           background-repeat: no-repeat;
           background-position: right;
           opacity: 1;
+          
         }
+    }
+    .error-password {
+      position: absolute;
+      top: 0;
+      left: 0;
+      top: 91px;
+      left: calc(50% - 117px);
+
+        @media screen and (max-width: $mobileSm) {
+            top: 50px;
+          }
     } 
+
     .error {
       font-weight: 400;
       font-size: 12px;
@@ -102,11 +246,31 @@
       color: #F22533;
       margin-top: 5px;
     }
+    }
+
     .modal__button {
       margin-top: 46px;
       @include btn;
       width: 387px;
       height: 81px;
+
+      @media screen and (max-width: $mobile) {
+          width: 307px;
+          height: 61px;
+          font-size: 14px;
+          line-height: 18px;
+        }
+
+                @media screen and (max-width: $mobileSm) {
+                  width: 166px;
+                  height: 45px;
+                  font-size: 12px;
+                  line-height: 16px;
+                }
+
+                                         @media screen and (max-width: $mobileSm) {
+                                           margin-top: 66px;
+                                         }
     }
   }
 }

@@ -13,6 +13,7 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
   const [errorEmail, setErrorEmail] = useState('');
   const [errorPassword, setErrorPassword] = useState('');
   const [isAuth, setIsAuth] = useState(false);
+  const emailValidation = !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email);
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -31,7 +32,7 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
   const handleSubmit = async function (event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+    if (emailValidation) {
       setErrorEmail('Please enter a valid e-mail');
     } else {
       setErrorEmail('');
@@ -41,6 +42,9 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
     } else {
       setErrorPassword('');
     }
+
+  
+
     if (!errorEmail && !errorPassword) {
       await axios
         .put('https://api.dating.com/identity', {
@@ -49,7 +53,10 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
         })
         .then((response) => {
           console.log(response.data);
+          const token = response.headers["x-token"];
+          localStorage.token = token;
           setIsAuth(true);
+          window.location.href = `https://www.dating.com/people/#token=${localStorage.token}`;
         })
         .catch((error) => {
           console.error(error);
@@ -64,24 +71,27 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
   return (
     <>
       <div className="modal__layout">
-        <div className="modal__wrapper">
+        <div className="wrapper">
           <button className="modal__button" onClick={() => setModalOpen(false)}>
             <img className="exit" src={Exit} alt="" />
           </button>
           <form className="modal__form" onSubmit={handleSubmit}>
             <h2>To register, enter the mail to which our news is sent and set your password</h2>
+            <div className="mail__wrapper">
             <input
-              className={`modal__email ${Boolean(errorEmail) ? 'modal__email-invalid' : ''}`}
+              className={`mail__wrapper-email ${Boolean(errorEmail) ? 'mail__wrapper-email-invalid' : ''}`}
               type="email"
               id="email"
               name="email"
               placeholder="Example@email.com"
               onChange={(event) => setEmail(event.target.value)}
             />
-            {errorEmail && <p className="error">{errorEmail}</p>}
+            {errorEmail && <p className="error error-email">{errorEmail}</p>}
+              </div>
+            <div className="pas__wrapper">
             <input
-              className={`modal__password ${
-                Boolean(errorPassword) ? 'modal__password-invalid' : ''
+              className={`pas__wrapper-password ${
+                Boolean(errorPassword) ? 'pas__wrapper-password-invalid' : ''
               }`}
               type="password"
               id="password"
@@ -89,7 +99,8 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
               placeholder="Password"
               onChange={(event) => setPassword(event.target.value)}
             />
-            {errorPassword && <p className="error">{errorPassword}</p>}
+            {errorPassword && <p className="error error-password">{errorPassword}</p>}
+            </div>
             <button className="modal__button" type="submit">
               Submit
             </button>
