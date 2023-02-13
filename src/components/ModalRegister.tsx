@@ -43,7 +43,6 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
       setErrorPassword('');
     }
 
-  
 
     if (!errorEmail && !errorPassword) {
       await axios

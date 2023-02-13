@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Group from '../images/Group.png';
 import ModalRegister from '../components/ModalRegister';
 
+
 type StartPageProps = {
   modalOpen: boolean
   setModalOpen: (modalOpen: boolean) => void;
@@ -19,7 +20,7 @@ const StartPage: React.FC<StartPageProps> = ({ modalOpen, setModalOpen }) => {
       <div className="container">
         <div className="start__wrapper">
           <div className="photos__wrapper">
-            <img className="group" src={Group} alt="" />
+            <img className="group" src={Group} alt="" /> 
           </div>
           <div className="text__wrapper">
             <h1>How to Participate</h1>
