@@ -21,7 +21,7 @@ const ModalRegister: React.FC<ModalRegisterProps> = ({ setModalOpen }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, );
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
